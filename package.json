@@ -4,7 +4,7 @@
   "description": "可以定义数轴上的范围，实现范围之间的操作：并集、交集、相减、切割",
   "main": "index.js",
   "dependencies": {
-    "int-range": "^0.0.1"
+    "int-range": "^1.0.0"
   },
   "devDependencies": {},
   "keywords": [
