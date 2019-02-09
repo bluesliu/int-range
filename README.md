@@ -2,14 +2,14 @@
 
 创建整数范围（`Range`），实现 `Range` 之间的加法、减法、交集、切割；判断 `Range` 之间是否存在相交（`isIntersect`）、包含（`isContains`）关系。
 
-## 安装
+## Insert:
 
 ```$xslt
 npm i int-range
 ```
 
 
-## DEMO
+## Demo:
 
 ```javascript
 const {Range, range, rangeAdd, rangeSub, rangeIntersect, rangeCut} = require('int-range');
@@ -42,7 +42,7 @@ console.log(`range1 cut range2 : ${rangeCut(range1, range2)}`);
 
 ```
 
-## output:
+## Output:
 
 ```javascript
 range1 : {min:0, max:9, length:10}
@@ -57,3 +57,11 @@ range2 - range1 : {min:10, max:12, length:3}
 range1 ∩ range2 : {min:8, max:9, length:2}
 range1 cut range2 : {min:0, max:7, length:8},{min:8, max:9, length:2},{min:10, max:12, length:3}
 ```
+
+## Update:
+
+|  版本 | 内容 |
+| ------ | --- |
+| 1.3.1 | 优化 `range()` 方法，可以返回 `length=0` 的 `Range` 实例。<br>例如： `range(2)` 等价于 `new Range(2,0)`|
+| 1.3.0 | 1、支持 `Range.length = 0`<br>2、新增方法：`Range.toRaw()`<br>3、优化算法<br>|
+| 1.2.0 | 新增方法：`[静态] Range.create()`、`[静态] Range.release()`、`Range.equal()`|
