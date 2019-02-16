@@ -1,10 +1,10 @@
 # int-range
 
-创建整数范围（`Range`），实现 `Range` 之间的加法、减法、交集、切割；判断 `Range` 之间是否存在相交（`isIntersect`）、包含（`isContains`）关系。
+创建整数范围（`IntRange`），实现 `IntRange` 之间的加法、减法、交集、切割；判断 `IntRange` 之间是否存在相交（`isIntersect`）、包含（`isContains`）关系。
 
-## Insert:
+## Install:
 
-```$xslt
+```shell
 npm i int-range
 ```
 
@@ -12,9 +12,9 @@ npm i int-range
 ## Demo:
 
 ```javascript
-const {Range, range, rangeAdd, rangeSub, rangeIntersect, rangeCut} = require('int-range');
+const {IntRange, range, rangeAdd, rangeSub, rangeIntersect, rangeCut} = require('int-range');
 
-let range1 = new Range(0,10);
+let range1 = new IntRange(0,10);
 console.log(`range1 : ${range1.toString()}`);
 
 let range2 = range(8,12);
@@ -62,7 +62,8 @@ range1 cut range2 : {min:0, max:7, length:8},{min:8, max:9, length:2},{min:10, m
 
 |  版本 | 更新内容 |
 | ------ | --- |
+| 1.3.3 | 1、修复 `Range.begin` 赋值异常的 BUG<br>2、优化项目结构，增加单元测试 |
 | 1.3.2 | 修复 `rangeSub(range(0))` 结果异常的 BUG |
-| 1.3.1 | 优化 `range()` 方法，可以返回 `length=0` 的 `Range` 实例。<br>例如： `range(2)` 等价于 `new Range(2,0)`|
-| 1.3.0 | 1、支持 `Range.length = 0`<br>2、新增方法：`Range.toRaw()`<br>3、优化算法<br>|
-| 1.2.0 | 新增方法：`[静态] Range.create()`、`[静态] Range.release()`、`Range.equal()`|
+| 1.3.1 | 优化 `range()` 方法，可以返回 `length=0` 的 `IntRange` 实例。<br>例如： `range(2)` 等价于 `new IntRange(2,0)`|
+| 1.3.0 | 1、支持 `IntRange.length = 0`<br>2、新增方法：`IntRange.toRaw()`<br>3、优化算法<br>|
+| 1.2.0 | 新增方法：`[静态] IntRange.create()`、`[静态] IntRange.release()`、`IntRange.equal()`|
