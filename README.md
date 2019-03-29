@@ -22,14 +22,14 @@ const {Range, range} = require("int-range");
 // 方式1
 let r1 = new Range(2, 3); // 创建 begin=2，length=3 的范围
 r1.toRaw();               // [2,3,4]
-let r2 = new Range(0, 1);	// 创建 begin=0，length=1 的范围
-r2.toRaw();								// [0]
+let r2 = new Range(0, 1); // 创建 begin=0，length=1 的范围
+r2.toRaw();               // [0]
 
 // 方式2
-let r3 = range(2, 4);			// 创建 min=2，max=4 的范围
-r3.toRaw(); 							// [2,3,4]
-let r4 = range(0, 0);			// 创建 min=0，max=0 的范围
-r4.toRaw();								// [0]
+let r3 = range(2, 4);     // 创建 min=2，max=4 的范围
+r3.toRaw();               // [2,3,4]
+let r4 = range(0, 0);     // 创建 min=0，max=0 的范围
+r4.toRaw();               // [0]
 ```
 
 
