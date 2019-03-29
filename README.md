@@ -42,29 +42,29 @@ r4.toRaw();               // [0]
 const {range, rangeAdd, rangeSub, rangeIntersect, rangeCut} = require("int-range");
 
 // 并集
-let r1 = range(1,3);								// [1,2,3]
-let r2 = range(2,4);								// [2,3,4]
-let r3 = range(9,10);								// [9,10]
-let result = rangeAdd(r1, r2, r3);	// 计算 r1、r2 的并集
-result instanceof Array;						// true
-result.length;											// 2
-result;															// [[1,2,3,4],[9,10]]
+let r1 = range(1,3);                // [1,2,3]
+let r2 = range(2,4);                // [2,3,4]
+let r3 = range(9,10);               // [9,10]
+let result = rangeAdd(r1, r2, r3);  // 计算 r1、r2 的并集
+result instanceof Array;            // true
+result.length;                      // 2
+result;                             // [[1,2,3,4],[9,10]]
 
 // 差集
-r1 = range(1,6);										// [1,2,3,4,5,6]
-r2 = range(3,4);										// [3,4]
-rangeSub(r1, r2);										// [[1,2],[5,6]]
+r1 = range(1,6);                    // [1,2,3,4,5,6]
+r2 = range(3,4);                    // [3,4]
+rangeSub(r1, r2);                   // [[1,2],[5,6]]
 
 // 交集
-r1 = range(1,3);										// [1,2,3]
-r2 = range(2,4);										// [2,3,4]
-rangeIntersect(r1, r2);							// [[2,3]]
+r1 = range(1,3);                    // [1,2,3]
+r2 = range(2,4);                    // [2,3,4]
+rangeIntersect(r1, r2);             // [[2,3]]
 
 // 切割
 // 可以理解为：(r1 - r2) ∪ (r1 ∩ r2) ∪ (r2 - r1)
-r1 = range(1,4);										// [1,2,3,4]
-r2 = range(3,6);										// [3,4,5,6]
-rangeCut(r1, r2);										// [[1,2],[3,4],[5,6]]
+r1 = range(1,4);                    // [1,2,3,4]
+r2 = range(3,6);                    // [3,4,5,6]
+rangeCut(r1, r2);                   // [[1,2],[3,4],[5,6]]
 ```
 
 
@@ -76,11 +76,11 @@ rangeCut(r1, r2);										// [[1,2],[3,4],[5,6]]
 ```javascript
 const {range, RangeGroup} = require("int-range");
 
-let rg = new RangeGroup();					// []
-rg.add(range(1,4)).add(range(3,6));	// [[1,2,3,4,5,6]] (使用链式调用)
-rg.intersect(range(3,4));						// [[1,2],[5,6]]
-rg.sub(range(5,5));									// [[1,2],[5]]
-rg.cut(range(1,6));									// [[1,2],[3,4],[5],[6]]
+let rg = new RangeGroup();          // []
+rg.add(range(1,4)).add(range(3,6)); // [[1,2,3,4,5,6]] (使用链式调用)
+rg.intersect(range(3,4));           // [[1,2],[5,6]]
+rg.sub(range(5,5));                 // [[1,2],[5]]
+rg.cut(range(1,6));                 // [[1,2],[3,4],[5],[6]]
 ```
 
 
