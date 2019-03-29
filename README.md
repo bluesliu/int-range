@@ -20,8 +20,8 @@ npm i int-range
 const {Range, range} = require("int-range");
 
 // 方式1
-let r1 = new Range(2, 3);	// 创建 begin=2，length=3 的范围
-r1.toRaw();								// [2,3,4]
+let r1 = new Range(2, 3); // 创建 begin=2，length=3 的范围
+r1.toRaw(); // [2,3,4]
 let r2 = new Range(0, 1);	// 创建 begin=0，length=1 的范围
 r2.toRaw();								// [0]
 
