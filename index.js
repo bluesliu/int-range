@@ -4,6 +4,7 @@ const rangeAdd = require("./lib/rangeAdd");
 const rangeCut = require("./lib/rangeCut");
 const rangeIntersect = require("./lib/rangeIntersect");
 const rangeSub = require("./lib/rangeSub");
+const RangeGroup = require("./lib/RangeGroup");
 
 module.exports = {
     Range,
@@ -11,5 +12,6 @@ module.exports = {
     rangeAdd,
     rangeCut,
     rangeIntersect,
-    rangeSub
+    rangeSub,
+    RangeGroup
 };

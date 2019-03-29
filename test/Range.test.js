@@ -98,4 +98,11 @@ describe("Range",()=>{
         let range2 = range1.clone();
         range1.equal(range2).should.true();
     });
+
+    it('isIntersect ', function () {
+        let range1 = new Range(0,0);
+        let range2 = new Range(-1, 2);
+        range1.isIntersect(range2).should.true();
+        range2.isIntersect(range1).should.true();
+    });
 });
