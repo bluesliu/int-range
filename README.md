@@ -79,7 +79,7 @@ const {range, RangeGroup} = require("int-range");
 let rg = new RangeGroup();          // []
 rg.add(range(1,4)).add(range(3,6)); // [[1,2,3,4,5,6]] (使用链式调用)
 rg.intersect(range(3,4));           // [[1,2],[5,6]]
-rg.sub(range(5,5));                 // [[1,2],[5]]
+rg.sub(range(5,5));                 // [[1,2],[6]]
 rg.cut(range(1,6));                 // [[1,2],[3,4],[5],[6]]
 ```
 
