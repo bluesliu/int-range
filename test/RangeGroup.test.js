@@ -73,4 +73,28 @@ describe("RangeCroup",()=>{
         rg = new RangeGroup(range(1,5));
         rg.cut(range(3)).toRaw().should.deepEqual([[1,2],[3,4,5]])
     });
+
+    it('equal() ', function () {
+        let rg1 = new RangeGroup(range(1,10));
+        let rg2 = new RangeGroup();
+        rg1.equal(rg2).should.false();
+
+        rg2.add(range(1,10));
+        rg1.equal(rg2).should.true();
+
+        rg1.add(range(20));
+        rg2.add(range(20));
+        rg1.equal(rg2).should.true();
+    });
+
+    it('isIntersect() ', function () {
+        let rg1 = new RangeGroup(range(1,5), range(6,10));
+        let rg2 = new RangeGroup(range(5,15));
+        rg1.isIntersect(rg2).should.true();
+        rg1.isIntersect(range(2,3)).should.true();
+        rg1.isIntersect(range(3,8)).should.true();
+        rg1.isIntersect(range(20,30)).should.false();
+        rg1.isIntersect(6).should.true();
+        rg1.isIntersect(20).should.false();
+    });
 });

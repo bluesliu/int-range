@@ -89,7 +89,8 @@ rg.cut(range(1,6));                 // [[1,2],[3,4],[5],[6]]
 
 |  版本 | 更新内容 |
 | ------ | --- |
-| 1.4.0 | 1、新增 `RangeGroup` 类<br>2、修复方法：`Range.isIntersect(range)`，当 `range` 参数为 `undefine` 时的BUG|
+| 1.5.0 | 新增方法：`RangeGroup.equal()`、`RangeGroup.isIntersect()` |
+| 1.4.0 | 1、新增 `RangeGroup` 类<br>2、修复 `Range.isIntersect(undefine)` 引起报错的 BUG |
 | 1.3.3 | 1、修复 `Range.begin` 赋值异常的 BUG<br>2、优化项目结构，增加单元测试 |
 | 1.3.2 | 修复 `rangeSub(range(0))` 结果异常的 BUG |
 | 1.3.1 | 优化 `range()` 方法，可以返回 `length=0` 的 `IntRange` 实例<br>例如： `range(2)` 等价于 `new IntRange(2,0)`|
