@@ -1,0 +1,8 @@
+example
+.npmignore
+.gitignore
+.babelrc
+.idea
+webpack.config.js
+webpack.build.js
+test/
