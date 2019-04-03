@@ -1,5 +1,5 @@
 require("should");
-const {range,rangeSub} = require("../index");
+const {rangeSub, range} = require("../lib");
 
 it('rangeSub()', function () {
     const r1 = range(1,5);

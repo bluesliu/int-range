@@ -1,12 +1,19 @@
 {
   "name": "int-range",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "int-range 是用来计算范围的类库。",
-  "main": "index.js",
+  "main": "src/index.js",
+  "jsnext:main": "src/index.js",
   "dependencies": {},
   "devDependencies": {
     "mocha": "^5.2.0",
-    "should": "^13.2.3"
+    "should": "^13.2.3",
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "babel-loader": "^8.0.5"
   },
   "keywords": [
     "range",
@@ -21,5 +28,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/bluesliu/int-range.git"
+  },
+  "scripts": {
+    "build": "webpack --config webpack.build.js",
+    "pub": "npm publish"
   }
 }

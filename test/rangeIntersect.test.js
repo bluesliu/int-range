@@ -1,5 +1,5 @@
 require("should");
-const {range, rangeIntersect} = require("../index");
+const {rangeIntersect, range} = require("../lib");
 
 it('rangeIntersect()', function () {
     rangeIntersect(range(1,5), range(6,10)).should.deepEqual([]);

@@ -1,5 +1,5 @@
 require("should");
-const {range, rangeCut} = require("../index");
+const {rangeCut, range} = require("../lib");
 
 describe("rangeCut()", ()=>{
     it('[0,5] cut [2,3] = [[0,1],[2,3],[4,5]]', function () {

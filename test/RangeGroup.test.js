@@ -1,6 +1,5 @@
 require("should");
-const RangeGroup = require("../lib/RangeGroup");
-const range = require("../lib/range");
+const {RangeGroup, range} = require("../lib");
 
 describe("RangeCroup",()=>{
     it('add()', function () {

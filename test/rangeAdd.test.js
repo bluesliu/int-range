@@ -1,6 +1,5 @@
 require("should");
-const rangeAdd = require("../lib/rangeAdd");
-const range = require("../lib/range");
+const {rangeAdd, range} = require("../lib");
 
 describe("rangeAdd",()=>{
     it('存在交集的范围相加，结果是1个Range', function () {

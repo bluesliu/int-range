@@ -1,4 +1,5 @@
-const {Range} = require("../index");
+const {Range} = require("../lib");
+
 const assert = require("assert").strict;
 require("should");
 

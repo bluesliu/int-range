@@ -5,17 +5,18 @@ const rangeIntersect = require("./rangeIntersect");
 const rangeCut = require("./rangeCut");
 
 class RangeGroup {
+    /**
+     *
+     * @type {Array.<Range>}
+     */
+    #ranges = [];
 
     /**
      *
      * @param {Range} args
      */
     constructor(...args) {
-        /**
-         *
-         * @type {Array.<Range>}
-         */
-        this.ranges = [];
+
 
         for (let i = 0; i < args.length; i++) {
             this.add(args[i]);
@@ -28,11 +29,11 @@ class RangeGroup {
      * @returns {RangeGroup}
      */
     add(range) {
-        this.ranges.push(range);
+        this.#ranges.push(range);
         //排序
-        sort(this.ranges);
+        sort(this.#ranges);
         //合并
-        merge(this.ranges);
+        merge(this.#ranges);
         return this;
     }
 
@@ -42,25 +43,25 @@ class RangeGroup {
      * @returns {RangeGroup}
      */
     sub(range) {
-        for (let i = 0; i < this.ranges.length; i++) {
-            const curRange = this.ranges[i];
+        for (let i = 0; i < this.#ranges.length; i++) {
+            const curRange = this.#ranges[i];
             if (curRange.isIntersect(range)) {
-                this.ranges[i] = rangeSub(curRange, range);
+                this.#ranges[i] = rangeSub(curRange, range);
             }
         }
         // 展开数组
-        for (let i = this.ranges.length - 1; i >= 0; i--) {
-            const arr = this.ranges[i];
+        for (let i = this.#ranges.length - 1; i >= 0; i--) {
+            const arr = this.#ranges[i];
             if (!(arr instanceof Array)) {
                 continue;
             }
-            this.ranges.splice(i, 1);
+            this.#ranges.splice(i, 1);
             if (arr.length > 0) {
-                this.ranges.splice(i, 0, ...arr);
+                this.#ranges.splice(i, 0, ...arr);
             }
         }
-        sort(this.ranges);
-        merge(this.ranges);
+        sort(this.#ranges);
+        merge(this.#ranges);
         return this;
     }
 
@@ -70,15 +71,15 @@ class RangeGroup {
      * @returns {RangeGroup}
      */
     intersect(range) {
-        for (let i = 0; i < this.ranges.length; i++) {
-            const curRange = this.ranges[i];
+        for (let i = 0; i < this.#ranges.length; i++) {
+            const curRange = this.#ranges[i];
             if (curRange.isIntersect(range)) {
-                this.ranges[i] = rangeIntersect(curRange, range)[0];
+                this.#ranges[i] = rangeIntersect(curRange, range)[0];
             }
         }
-        for (let i = this.ranges.length-1; i >= 0; i--) {
-            if(!this.ranges[i]){
-                this.ranges.splice(i,1);
+        for (let i = this.#ranges.length-1; i >= 0; i--) {
+            if(!this.#ranges[i]){
+                this.#ranges.splice(i,1);
             }
         }
         return this;
@@ -90,25 +91,25 @@ class RangeGroup {
      * @returns {RangeGroup}
      */
     cut(range) {
-        for (let i = 0; i < this.ranges.length; i++) {
-            const curRange = this.ranges[i];
+        for (let i = 0; i < this.#ranges.length; i++) {
+            const curRange = this.#ranges[i];
             if (curRange.isIntersect(range)) {
-                this.ranges[i] = rangeCut(curRange, range);
+                this.#ranges[i] = rangeCut(curRange, range);
             }
         }
         // 展开数组
-        for (let i = this.ranges.length - 1; i >= 0; i--) {
-            const arr = this.ranges[i];
+        for (let i = this.#ranges.length - 1; i >= 0; i--) {
+            const arr = this.#ranges[i];
             if (!(arr instanceof Array)) {
                 continue;
             }
-            this.ranges.splice(i, 1);
+            this.#ranges.splice(i, 1);
             if (arr.length > 0) {
-                this.ranges.splice(i, 0, ...arr);
+                this.#ranges.splice(i, 0, ...arr);
             }
         }
-        sort(this.ranges);
-        merge(this.ranges);
+        sort(this.#ranges);
+        merge(this.#ranges);
         return this;
     }
 
@@ -118,8 +119,8 @@ class RangeGroup {
      */
     toRaw() {
         const raw = [];
-        for (let i = 0; i < this.ranges.length; i++) {
-            raw[i] = this.ranges[i].toRaw();
+        for (let i = 0; i < this.#ranges.length; i++) {
+            raw[i] = this.#ranges[i].toRaw();
         }
         return raw;
     }
@@ -130,11 +131,11 @@ class RangeGroup {
      * @returns {boolean}
      */
     equal(rg) {
-        if(this.ranges.length !== rg.ranges.length)
+        if(this.#ranges.length !== rg.ranges.length)
             return false;
 
-        for (let i = 0; i < this.ranges.length; i++) {
-            let r1 = this.ranges[i];
+        for (let i = 0; i < this.#ranges.length; i++) {
+            let r1 = this.#ranges[i];
             let r2 = rg.ranges[i];
             if(!r1.equal(r2)){
                 return false;
@@ -149,8 +150,8 @@ class RangeGroup {
      * @returns {boolean}
      */
     isIntersect(obj) {
-        for (let i = 0; i < this.ranges.length; i++) {
-            const range = this.ranges[i];
+        for (let i = 0; i < this.#ranges.length; i++) {
+            const range = this.#ranges[i];
             if(obj instanceof RangeGroup){
                 for (let j = 0; j < obj.ranges.length; j++) {
                     if(range.isIntersect(obj.ranges[j])){
@@ -173,6 +174,14 @@ class RangeGroup {
             }
         }
         return false;
+    }
+
+    reset() {
+        this.#ranges.length = 0;
+    }
+
+    get ranges() {
+        return this.#ranges.concat();
     }
 }
 
